@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="password-generator">
+    <div *ngIf="getPassWord()" class="header">
+      <div class="title">{{ getPassWord() }}</div>
+      <app-button
+        [text]="copied ? 'copied' : 'copy'"
+        (clickHandler)="handleCopy()"
+        buttonClass="copy-btn"
+      ></app-button>
+    </div>
+
+    <app-slider-input
+      title="Character Length"
+      [value]="charLength"
+      [min]="4"
+      [max]="20"
+      (handleChange)="updateCharLength($event)"
+    ></app-slider-input>
+
+    <div class="checkboxes">
+      <div *ngFor="let checkbox of checkBoxData; let index = index">
+        <app-checkbox-input
+          [checkbox]="checkbox"
+          (handleCheckboxClick)="handleCheckboxChange(index)"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="getErrorMessage()" class="errorMessage">
+      {{ getErrorMessage() }}
+    </div>
+
+    <app-strength-checker
+      *ngIf="getPassWord()"
+      password="{{ getPassWord() }}"
+    ></app-strength-checker>
+
+    <app-button
+      text="Generate Password"
+      (clickHandler)="generatePass()"
+      buttonClass="generate-btn"
+    ></app-button>
+  </div>
+</div>

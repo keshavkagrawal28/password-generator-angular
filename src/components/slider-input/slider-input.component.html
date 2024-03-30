@@ -1,0 +1,13 @@
+<div class="characterLength">
+  <span>
+    <label>{{ title }}</label>
+    <label>{{ value }}</label>
+  </span>
+  <input
+    type="range"
+    [min]="min"
+    [max]="max"
+    [value]="value"
+    (change)="updateSliderValue($event)"
+  />
+</div>

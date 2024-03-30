@@ -1,0 +1,7 @@
+.passwordStrength {
+  color: White;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+}
